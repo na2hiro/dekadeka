@@ -41,7 +41,7 @@ const Dekadeka = () => {
             <span id="size"/>
             (10 to 500)
         </div>
-        <textarea onChange={onChangeTextarea} style={{ height: "100%", width: "100%", fontSize: `${fontSize}px` }}
+        <textarea onChange={onChangeTextarea} style={{ height: "100%", width: "100%", fontSize: `${fontSize}px`, boxSizing: "border-box" }}
                   placeholder="デカデカと表示する" value={text}/>
     </>;
 };
