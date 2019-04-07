@@ -30,7 +30,8 @@ module.exports = {
             favicon: "./assets/favicon.ico",
             meta: {
                 "viewport": "width=device-width, initial-scale=1"
-            }
+            },
+            template: "assets/template.html"
         }),
         new pwaManifestPlugin({
             "name": "Dekadeka",
