@@ -1,0 +1,39 @@
+{
+  "name": "dekadeka",
+  "version": "1.0.0",
+  "description": "App to display text in a big way",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode=development",
+    "build": "npm run lint && webpack --mode=production",
+    "lint:check": "tslint-config-prettier-check ./tslint.json",
+    "lint": "tslint -c ./tslint.json ./src/**/*.ts ./src/**/*.tsx",
+    "lint:fix": "tslint -c ./tslint.json ./src/**/*.ts ./src/**/*.tsx --fix"
+  },
+  "author": "na2hiro",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-lint": "^4.5.1",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.12",
+    "@types/react-dom": "^16.8.3"
+  }
+}
