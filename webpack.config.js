@@ -1,5 +1,7 @@
 const path = require('path');
+const cleanPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/main.tsx',
@@ -21,7 +23,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin()
+        new cleanPlugin({}),
+        new HtmlWebpackPlugin(),
+        new workboxPlugin.GenerateSW({
+            swDest: 'sw.js',
+            clientsClaim: true,
+            skipWaiting: true,
+        })
     ],
     devServer: {
         contentBase: "./dist"
