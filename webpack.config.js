@@ -49,7 +49,8 @@ module.exports = {
             "start_url": "/dekadeka/",
             "background_color": "#2B9EEB",
             "theme_color": "#2B9EEB",
-            "orientation": "any",
+            "orientation": "omit",
+            "display": "fullscreen",
             "icons": [
                 {
                     "src": "./assets/icon-192x192.png",
