@@ -1,0 +1,20 @@
+{
+  "icons": [
+    {
+      "src": "/dekadeka/assets/icon_512x512.fa8f19c6949f34ea6fc64c84de7a793f.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/dekadeka/assets/icon_192x192.d557e0240f0d7d23ef8fca15535c545c.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Dekadeka",
+  "short_name": "Dekadeka",
+  "display": "fullscreen",
+  "start_url": "/dekadeka/",
+  "background_color": "#2B9EEB",
+  "theme_color": "#2B9EEB"
+}
