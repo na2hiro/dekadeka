@@ -31,8 +31,8 @@
     "typescript": "^3.4.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-pwa-manifest": "^4.0.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-pwa-manifest": "^4.3.0",
     "workbox-webpack-plugin": "^4.2.0"
   },
   "devDependencies": {
