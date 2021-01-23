@@ -6,7 +6,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dekadeka/assets/icon_512x512.5a99ac951e92f4c0e2886afcc4607390.png"
   },
   {
-    "revision": "274f04806c2c172e25b0",
+    "revision": "6ba82177e21dc6ee8bee",
     "url": "/dekadeka/dekadeka.js"
   },
   {
@@ -14,7 +14,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dekadeka/favicon.ico"
   },
   {
-    "revision": "6565f6fa501358f6b211512f1597cae2",
+    "revision": "52b78eb659288037aa22fbd4be327e32",
     "url": "/dekadeka/index.html"
   },
   {
