@@ -71,7 +71,8 @@ const Banner = () => {
         )}
         <div className="banner">
             <div ref={ref} contentEditable={true} onKeyUp={onKeyPress} onFocus={onFocus} onBlur={onBlur}>
-                Hello world
+                Hello,
+                world!
             </div>
         </div>
     </>;
