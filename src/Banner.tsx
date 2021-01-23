@@ -1,5 +1,8 @@
 import React, {useCallback, useEffect, useRef, useState} from "react";
-import fitty, {FittyInstance} from "fitty";
+// TODO: Import from fitty npm module once the MR for height fitting is merged
+// https://github.com/rikschennink/fitty/pull/69
+// @ts-ignore
+import fitty, {FittyInstance} from "../lib/fitty.module";
 import fscreen from "fscreen";
 
 const LOCAL_STORAGE_KEY = "dekadeka:banner-text";
