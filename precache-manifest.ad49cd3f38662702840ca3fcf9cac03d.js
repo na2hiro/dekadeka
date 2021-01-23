@@ -6,7 +6,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dekadeka/assets/icon_512x512.5a99ac951e92f4c0e2886afcc4607390.png"
   },
   {
-    "revision": "6ba82177e21dc6ee8bee",
+    "revision": "6b13637a41784cb4d909",
     "url": "/dekadeka/dekadeka.js"
   },
   {
