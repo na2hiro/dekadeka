@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Dekadeka from "./Dekadeka";
+import Banner from "./Banner";
 
 import "./main.scss";
 
-ReactDOM.render(<Dekadeka/>, document.body);
+ReactDOM.render(<Banner/>, document.body);
 
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {

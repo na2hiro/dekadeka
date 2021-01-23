@@ -36,7 +36,7 @@ module.exports = {
             title: "Dekadeka",
             favicon: "./assets/favicon.ico",
             meta: {
-                "viewport": "width=device-width, initial-scale=1"
+                "viewport": "width=device-width, initial-scale=1, user-scalable=yes"
             },
             template: "assets/template.html",
             templateParameters: {
@@ -72,7 +72,8 @@ module.exports = {
     devServer: {
         contentBase: "./dist",
         publicPath: "/dekadeka/",
-        openPage: "dekadeka/"
+        openPage: "dekadeka/",
+        host: "0.0.0.0"
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
