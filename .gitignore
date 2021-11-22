@@ -3,3 +3,4 @@ node_modules
 /deploy.sh
 /assets/google-analytics-snippet.html
 .idea/
+.DS_Store
