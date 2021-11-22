@@ -1,0 +1,1 @@
+{"name":"Dekadeka","short_name":"Dekadeka","start_url":"/dekadeka/","display":"fullscreen","background_color":"#2B9EEB","lang":"en","scope":"/","theme_color":"#2B9EEB","orientation":"omit","icons":[{"src":"./assets/icon-192x192.png","sizes":"192x192","destination":"assets"},{"src":"./assets/icon-512x512.png","sizes":"512x512","destination":"assets"}]}

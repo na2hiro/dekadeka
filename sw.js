@@ -1,8 +1,1 @@
-importScripts("/dekadeka/precache-manifest.7a96fbf4dac0f07b7396b2b18d4b5cd7.js", "https://storage.googleapis.com/workbox-cdn/releases/4.2.0/workbox-sw.js");
-
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
-workbox.googleAnalytics.initialize();
-
-workbox.precaching.precacheAndRoute(self.__precacheManifest);
-
+if(!self.define){let e,s={};const d=(d,i)=>(d=new URL(d+".js",i).href,s[d]||new Promise((s=>{if("document"in self){const e=document.createElement("script");e.src=d,e.onload=s,document.head.appendChild(e)}else e=d,importScripts(d),s()})).then((()=>{let e=s[d];if(!e)throw new Error(`Module ${d} didn’t register its module`);return e})));self.define=(i,r)=>{const n=e||("document"in self?document.currentScript.src:"")||location.href;if(s[n])return;let t={};const c=e=>d(e,n),o={module:{uri:n},exports:t,require:c};s[n]=Promise.all(i.map((e=>o[e]||c(e)))).then((e=>(r(...e),t)))}}define(["./workbox-5e576d5d"],(function(e){"use strict";self.addEventListener("message",(e=>{e.data&&"SKIP_WAITING"===e.data.type&&self.skipWaiting()})),e.precacheAndRoute([{url:"assets/index.7a2ee198.css",revision:"dcdeae3b76f33206894bb8fa30109617"},{url:"assets/index.ae0c8828.js",revision:"a39a76de4c450fbcbf17dd1d9a5c1787"},{url:"assets/vendor.aa0d38c6.js",revision:"4b4db41d50909f6ddab7d26d19b00165"},{url:"index.html",revision:"dd3c6285a8f86c54fbb70c70cfdc0969"},{url:"registerSW.js",revision:"1872c500de691dce40960bb85481de07"},{url:"manifest.webmanifest",revision:"af2c30d0f68556560c30ace3ecaca13d"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("index.html")))}));
