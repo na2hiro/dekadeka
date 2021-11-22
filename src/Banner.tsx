@@ -1,8 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
-// TODO: Import from fitty npm module once the MR for height fitting is merged
-// https://github.com/rikschennink/fitty/pull/69
-// @ts-ignore
-import fitty, {FittyInstance} from "fitty";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import fitty, { FittyInstance } from "fitty";
 import fscreen from "fscreen";
 
 const LOCAL_STORAGE_KEY = "dekadeka:banner-text";
@@ -16,7 +13,7 @@ const Banner = () => {
         fscreen.addEventListener("fullscreenchange", () => {
             setFullScreen(!!fscreen.fullscreenElement);
         });
-    }, [])
+    }, []);
     useEffect(() => {
         setFty(fitty(ref.current!));
 
@@ -24,7 +21,7 @@ const Banner = () => {
             if (fty) {
                 fty.unsubscribe();
             }
-        }
+        };
     }, []);
     useEffect(() => {
         try {
@@ -32,9 +29,7 @@ const Banner = () => {
             if (restored && ref.current) {
                 ref.current.textContent = restored;
             }
-        } catch (e) {
-
-        }
+        } catch (e) {}
     }, []);
 
     const onExitFullscreenClick = useCallback(() => {
@@ -57,26 +52,33 @@ const Banner = () => {
     const onBlur = useCallback(() => {
         setTimeout(() => {
             setEditing(false);
-        }, 100)
+        }, 100);
     }, []);
 
-    return <>
-        {isEditing && (
-            <div className="control">
-                {isFullScreen && fscreen.fullscreenEnabled && (
-                    <button onClick={onExitFullscreenClick}>Exit fullsreen</button>
-                )}
-                {<button onClick={onViewClick}>View</button>}
+    return (
+        <>
+            {isEditing && (
+                <div className="control">
+                    {isFullScreen && fscreen.fullscreenEnabled && (
+                        <button onClick={onExitFullscreenClick}>Exit fullsreen</button>
+                    )}
+                    {<button onClick={onViewClick}>View</button>}
+                </div>
+            )}
+            <div className="banner">
+                <div
+                    ref={ref}
+                    contentEditable={true}
+                    onKeyUp={onKeyPress}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                >
+                    Hello, world!
+                </div>
             </div>
-        )}
-        <div className="banner">
-            <div ref={ref} contentEditable={true} onKeyUp={onKeyPress} onFocus={onFocus} onBlur={onBlur}>
-                Hello,
-                world!
-            </div>
-        </div>
-    </>;
-}
+        </>
+    );
+};
 
 function serialize(dom: Node) {
     const [, ret] = serializeInner(dom);
@@ -89,12 +91,11 @@ function serialize(dom: Node) {
 
         let ret = "";
         for (let i = 0; i < dom.childNodes.length; i++) {
-            let [nl, str] = serializeInner(dom.childNodes[i]);
+            const [nl, str] = serializeInner(dom.childNodes[i]);
             ret += `${i > 0 && nl ? "\n" : ""}${str}`;
         }
         return [dom.nodeName.toLowerCase() === "div", ret];
     }
 }
-
 
 export default Banner;

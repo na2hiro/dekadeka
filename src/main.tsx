@@ -4,7 +4,7 @@ import Banner from "./Banner";
 
 import "./main.scss";
 
-import {useRegisterSW} from "virtual:pwa-register/react";
+import { useRegisterSW } from "virtual:pwa-register/react";
 
 const Main = () => {
     const {
@@ -14,10 +14,10 @@ const Main = () => {
     } = useRegisterSW({
         onRegistered(r) {
             // eslint-disable-next-line prefer-template
-            console.log('SW Registered: ' + r)
+            console.log("SW Registered: " + r);
         },
         onRegisterError(error) {
-            console.log('SW registration error', error)
+            console.log("SW registration error", error);
         },
         onNeedRefresh() {
             if (confirm(`Newer version is available. Refresh to update?`)) {
@@ -25,11 +25,11 @@ const Main = () => {
             }
         },
         onOfflineReady() {
-            console.log('offline ready')
-        }
+            console.log("offline ready");
+        },
     });
 
     return <Banner />;
-}
+};
 
 ReactDOM.render(<Main />, document.getElementById("main"));
