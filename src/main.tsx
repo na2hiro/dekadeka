@@ -1,20 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Banner from "./Banner";
-import {Workbox} from "workbox-window"
 
 import "./main.scss";
 
-ReactDOM.render(<Banner/>, document.body);
+import {useRegisterSW} from "virtual:pwa-register/react";
 
-if ("serviceWorker" in navigator) {
-    const wb = new Workbox("sw.js");
-    wb.addEventListener('installed', event => {
-        if (event.isUpdate) {
+const Main = () => {
+    const {
+        offlineReady: [offlineReady, setOfflineReady],
+        needRefresh: [needRefresh, setNeedRefresh],
+        updateServiceWorker,
+    } = useRegisterSW({
+        onRegistered(r) {
+            // eslint-disable-next-line prefer-template
+            console.log('SW Registered: ' + r)
+        },
+        onRegisterError(error) {
+            console.log('SW registration error', error)
+        },
+        onNeedRefresh() {
             if (confirm(`Newer version is available. Refresh to update?`)) {
-                window.location.reload();
+                updateServiceWorker(true);
             }
+        },
+        onOfflineReady() {
+            console.log('offline ready')
         }
     });
-    wb.register();
+
+    return <Banner />;
 }
+
+ReactDOM.render(<Main />, document.getElementById("main"));

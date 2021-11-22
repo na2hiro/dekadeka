@@ -10,6 +10,11 @@ html, body {
   overflow: hidden;
 }
 
+#main {
+  height: 100%;
+  width: 100%;
+}
+
 .control {
   position: fixed;
   top: 0;
