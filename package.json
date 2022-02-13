@@ -12,7 +12,7 @@
     "preview": "vite build && vite preview",
     "lint:check": "tslint-config-prettier-check ./tslint.json",
     "lint": "eslint -c .eslintrc.json --ext .ts,.tsx ./src",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "pnpm lint -- --fix"
   },
   "author": "na2hiro",
   "license": "MIT",
@@ -36,6 +36,13 @@
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "vite": "^2.6.14",
-    "vite-plugin-pwa": "^0.11.6"
+    "vite-plugin-pwa": "^0.11.6",
+    "workbox-window": "^6.4.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "json-schema@<0.4.0": ">=0.4.0",
+      "nanoid@<3.1.31": ">=3.1.31"
+    }
   }
 }
