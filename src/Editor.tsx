@@ -8,6 +8,7 @@ import {useSettings} from "./context/settingsContext";
  */
 function useFitty(ref: React.RefObject<HTMLElement>) {
     const [fty, setFty] = useState<FittyInstance | null>(null);
+    const [obj] = useSettings();
     useEffect(() => {
         setFty(fitty(ref.current!));
 
@@ -17,6 +18,10 @@ function useFitty(ref: React.RefObject<HTMLElement>) {
             }
         };
     }, []);
+
+    useEffect(() => {
+        fty?.fit();
+    }, [obj])
 }
 
 const LOCAL_STORAGE_KEY = "dekadeka:banner-text";
@@ -81,6 +86,7 @@ const Editor: React.VFC<Props> = ({onFocus}) => {
                 contentEditable={true}
                 onKeyUp={onChangeText}
                 onFocus={onFocus}
+                spellCheck={false}
             />
         </div>
     )
