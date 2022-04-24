@@ -40,12 +40,21 @@ html, body {
 
 .banner > div {
   white-space: pre !important;
+/*  animation: rotation 2s infinite linear;*/
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .settings {
   position: absolute;
   top: 20px;
-  bottom: 20px;
   left: 20px;
   right: 20px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -54,8 +63,8 @@ html, body {
   border-radius: 5px;
 }
 
-label {
-  display: inline-block;
+.options {
+  display: block;
   font-size: x-large;
   margin: 10px 0;
 }
