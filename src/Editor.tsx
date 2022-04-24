@@ -76,10 +76,13 @@ const Editor: React.VFC<Props> = ({onFocus}) => {
     const {onChangeText} = useLocalStorageSyncedTextContent(ref);
     const [{isBold, textColor, bgColor}] = useSettings();
 
+    useEffect(() => {
+        document.body.style.backgroundColor = bgColor;
+    }, [bgColor]);
+
     return (
         <div className={`banner ${isBold ? "bold" : ""}`} style={{
-            color: textColor,
-            backgroundColor: bgColor,
+            color: textColor
         }}>
             <div
                 ref={ref}
