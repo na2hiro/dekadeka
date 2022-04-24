@@ -5,7 +5,6 @@
 html, body {
   height: 100%;
   background-color: white;
-  font-weight: 900;
   font-family: sans-serif;
   overflow: hidden;
 }
@@ -35,6 +34,28 @@ html, body {
   text-align: center;
 }
 
+.banner.bold {
+  font-weight: 900;
+}
+
 .banner > div {
   white-space: pre !important;
+}
+
+.settings {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border: gray solid 1px;
+  border-radius: 5px;
+}
+
+label {
+  display: inline-block;
+  font-size: x-large;
+  margin: 10px 0;
 }

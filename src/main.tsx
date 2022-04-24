@@ -4,7 +4,8 @@ import Banner from "./Banner";
 
 import "./main.scss";
 
-import { useRegisterSW } from "virtual:pwa-register/react";
+import {useRegisterSW} from "virtual:pwa-register/react";
+import {SettingsContextProvider} from "./context/settingsContext";
 
 const Main = () => {
     const {
@@ -29,7 +30,9 @@ const Main = () => {
         },
     });
 
-    return <Banner />;
+    return <SettingsContextProvider>
+        <Banner/>
+    </SettingsContextProvider>;
 };
 
-ReactDOM.render(<Main />, document.getElementById("main"));
+ReactDOM.render(<Main/>, document.getElementById("main"));

@@ -1,101 +1,72 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import fitty, { FittyInstance } from "fitty";
+import React, {useCallback, useEffect, useState} from "react";
 import fscreen from "fscreen";
+import Editor from "./Editor";
+import SettingsPanel from "./SettingsPanel";
 
-const LOCAL_STORAGE_KEY = "dekadeka:banner-text";
+type State = "viewing" | "editing" | "setting";
 
-const Banner = () => {
-    const [isEditing, setEditing] = useState(false);
+function useFullScreen() {
     const [isFullScreen, setFullScreen] = useState(false);
-    const [fty, setFty] = useState<FittyInstance | null>(null);
-    const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
         fscreen.addEventListener("fullscreenchange", () => {
             setFullScreen(!!fscreen.fullscreenElement);
         });
     }, []);
-    useEffect(() => {
-        setFty(fitty(ref.current!));
 
-        return () => {
-            if (fty) {
-                fty.unsubscribe();
-            }
-        };
-    }, []);
-    useEffect(() => {
-        try {
-            const restored = localStorage.getItem(LOCAL_STORAGE_KEY);
-            if (restored && ref.current) {
-                ref.current.textContent = restored;
-            }
-        } catch (e) {}
-    }, []);
-
-    const onExitFullscreenClick = useCallback(() => {
+    const exitFullScreen = useCallback(() => {
         fscreen.exitFullscreen();
     }, []);
-    const onViewClick = useCallback(() => {
+    const enterFullScreen = useCallback(() => {
         document.body.focus();
         if (!isFullScreen) {
             fscreen.requestFullscreen(document.body);
         }
     }, []);
-    const onKeyPress = useCallback(() => {
-        if (ref.current) {
-            localStorage.setItem(LOCAL_STORAGE_KEY, serialize(ref.current));
+
+    return {
+        isFullScreen,
+        enterFullScreen,
+        exitFullScreen,
+    }
+}
+
+const Banner = () => {
+    const [state, setState] = useState<State>("viewing");
+    const {isFullScreen, enterFullScreen, exitFullScreen} = useFullScreen();
+    useEffect(() => {
+        const handler = (e) => {
+            if (e.target.classList.contains("banner")) {
+                setState("viewing");
+            }
         }
-    }, []);
-    const onFocus = useCallback(() => {
-        setEditing(true);
-    }, []);
-    const onBlur = useCallback(() => {
-        setTimeout(() => {
-            setEditing(false);
-        }, 100);
+        document.body.addEventListener("click", handler);
+
+        return () => document.body.removeEventListener("click", handler);
     }, []);
 
     return (
         <>
-            {isEditing && (
+            {state != "viewing" &&
                 <div className="control">
                     {isFullScreen && fscreen.fullscreenEnabled && (
-                        <button onClick={onExitFullscreenClick}>Exit fullsreen</button>
+                        <button onClick={exitFullScreen}>Exit fullsreen</button>
                     )}
-                    {<button onClick={onViewClick}>View</button>}
+                    {<button onClick={() => {
+                        setState("viewing");
+                        enterFullScreen();
+                    }}>View</button>}
+                    {<button onClick={() => {
+                        console.log("onclick setting")
+                        setState("setting")
+                    }}>Settings</button>}
                 </div>
-            )}
-            <div className="banner">
-                <div
-                    ref={ref}
-                    contentEditable={true}
-                    onKeyUp={onKeyPress}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                >
-                    Hello, world!
-                </div>
-            </div>
+            }
+            <Editor onFocus={() => {
+                setState("editing")
+            }}/>
+            {state === "setting" && <SettingsPanel onClose={()=>setState("viewing")}/>}
         </>
     );
 };
-
-function serialize(dom: Node) {
-    const [, ret] = serializeInner(dom);
-    return ret;
-
-    function serializeInner(dom: Node): [boolean, string] {
-        if (dom.nodeType === Node.TEXT_NODE) {
-            return [false, dom.textContent!];
-        }
-
-        let ret = "";
-        for (let i = 0; i < dom.childNodes.length; i++) {
-            const [nl, str] = serializeInner(dom.childNodes[i]);
-            ret += `${i > 0 && nl ? "\n" : ""}${str}`;
-        }
-        return [dom.nodeName.toLowerCase() === "div", ret];
-    }
-}
 
 export default Banner;
